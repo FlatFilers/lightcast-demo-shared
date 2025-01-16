@@ -1,20 +1,24 @@
 import FlatfileListener from "@flatfile/listener";
-import { addStringValidator } from "./support/utils/common/validation";
-import { diagnosisValidation } from "./hooks/diagnosis.hooks";
-import { coverageValidation } from "./hooks/coverage.hooks";
+import { lookupRoles } from "./jobs/lookup.job";
+import { generateSkills } from "./jobs/populate.job";
+import { filterSkills } from "./jobs/filter.job";
 import { spaceConfigure } from "./space.configure";
 import { submitActionHandler } from "./jobs/submit.job";
+import { realTimeJobLookup } from "./hooks/lookup.hooks";
+import { dedupePlugin } from "@flatfile/plugin-dedupe";
 
-export function aetion(listener: FlatfileListener) {
-  // Add sheet validators
-  listener.use(diagnosisValidation);
-  listener.use(coverageValidation);
-
-  // Add external validation
-  listener.use(addStringValidator);
+export default (listener: FlatfileListener) => {
+  // Add hooks
+  // listener.use(realTimeJobLookup);
 
   // Add job handlers
+  listener.use(lookupRoles);
+  listener.use(generateSkills);
+  listener.use(filterSkills);
   listener.use(submitActionHandler);
+
+  // Add plugins
+  listener.use(dedupePlugin("dedupe-roles", { on: "source_job_code", keep: "first" }))
 
   // Configure the space
   listener.use(spaceConfigure);

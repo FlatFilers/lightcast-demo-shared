@@ -1,21 +1,19 @@
 import { configureSpace } from "@flatfile/plugin-space-configure";
-import { patientSheet } from "./blueprints/patient.sheet";
-import { coverageSheet } from "./blueprints/coverage.sheet";
-import { encountersSheet } from "./blueprints/encounters.sheet";
-import { diagnosisSheet } from "./blueprints/diagnosis.sheet";
+import { roles } from "./blueprints/roles.sheet";
+import { skills } from "./blueprints/skills.sheet";
 
 export const spaceConfigure = configureSpace({
   workbooks: [
     {
-      name: "Aetion Workbook",
-      sheets: [patientSheet, coverageSheet, diagnosisSheet],
+      name: "Role Matching Workbook",
+      sheets: [roles, skills],
       actions: [
         {
           operation: "submitActionFg",
           mode: "foreground",
           label: "Submit",
           primary: true,
-          description: "Submit data for processing",
+          description: "Submit data to HCM",
         },
       ],
     },
@@ -27,12 +25,12 @@ export const spaceConfigure = configureSpace({
           primaryColor: "#000000",
         },
         sidebar: {
-          logo: "https://aetion.com/wp-content/uploads/2020/09/Aetion-H-logo.svg",
-          backgroundColor: "#ffffff",
-          focusTextColor: "#ffffff",
-          focusBgColor: "#000000",
-          titleColor: "#000000",
-          textColor: "#000000"
+          logo: "https://europe-insights.lightcast.io/static/media/Lighcast_RGB_Lockup_Color_full.050c98261a09f8c012ba.png",
+          // backgroundColor: "#ffffff",
+          // focusTextColor: "#ffffff",
+          // focusBgColor: "#000000",
+          // titleColor: "#000000",
+          // textColor: "#000000"
         },
       },
     },
