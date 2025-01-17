@@ -17,6 +17,19 @@ export const spaceConfigure = configureSpace({
         },
       ],
     },
+    {
+      name: "Workbook 2",
+      sheets: [roles, skills],
+      actions: [
+        {
+          operation: "submitActionFg",
+          mode: "foreground",
+          label: "Submit",
+          primary: true,
+          description: "Submit data to HCM",
+        },
+      ],
+    },
   ],
   space: {
     metadata: {
@@ -35,4 +48,4 @@ export const spaceConfigure = configureSpace({
       },
     },
   },
-})
+});

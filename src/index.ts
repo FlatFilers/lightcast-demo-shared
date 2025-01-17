@@ -9,7 +9,7 @@ import { dedupePlugin } from "@flatfile/plugin-dedupe";
 
 export default (listener: FlatfileListener) => {
   // Add hooks
-  // listener.use(realTimeJobLookup);
+  listener.use(realTimeJobLookup);
 
   // Add job handlers
   listener.use(lookupRoles);
@@ -18,8 +18,10 @@ export default (listener: FlatfileListener) => {
   listener.use(submitActionHandler);
 
   // Add plugins
-  listener.use(dedupePlugin("dedupe-roles", { on: "source_job_code", keep: "first" }))
+  listener.use(
+    dedupePlugin("dedupe-roles", { on: "source_job_code", keep: "first" })
+  );
 
   // Configure the space
   listener.use(spaceConfigure);
-} 
+};
