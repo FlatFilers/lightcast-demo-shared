@@ -9,24 +9,63 @@ export const spaceConfigure = configureSpace({
       sheets: [roles, skills],
       actions: [
         {
-          operation: "submitActionFg",
+          operation: "pushToCustomerWorkbook",
           mode: "foreground",
-          label: "Submit",
+          label: "Push to Customer",
           primary: true,
-          description: "Submit data to HCM",
+          description: "Takes mapped data and pushes to customer workbook",
+        },
+        {
+          operation: "pullFromCustomerWorkbook",
+          mode: "foreground",
+          label: "Pull from Customer",
+          primary: true,
+          description:
+            "Pulls all data from customer workbook and overwrites Lightcast Workbook",
         },
       ],
     },
     {
-      name: "Workbook 2",
-      sheets: [roles, skills],
+      name: "Customer Workbook",
+      sheets: [
+        {
+          ...roles,
+          allowAdditionalFields: false,
+          access: ["edit", "delete"],
+          fields: roles.fields.map((field) => ({
+            ...field,
+            readonly: !["approvedRole", "customer_comment"].includes(field.key),
+          })),
+        },
+        {
+          ...skills,
+          allowAdditionalFields: false,
+          access: ["edit", "delete"],
+          fields: skills.fields.map((field) => ({
+            ...field,
+            readonly: !["reviewedSkill", "customer_comment"].includes(
+              field.key
+            ),
+          })),
+        },
+      ],
       actions: [
         {
           operation: "submitActionFg",
           mode: "foreground",
           label: "Submit",
           primary: true,
-          description: "Submit data to HCM",
+          tooltip: "Submit data to HCM",
+          inputForm: {
+            type: "simple",
+            fields: [
+              {
+                key: "account_id",
+                label: "lightcast_account_id",
+                type: "string",
+              },
+            ],
+          },
         },
       ],
     },
@@ -39,11 +78,6 @@ export const spaceConfigure = configureSpace({
         },
         sidebar: {
           logo: "https://europe-insights.lightcast.io/static/media/Lighcast_RGB_Lockup_Color_full.050c98261a09f8c012ba.png",
-          // backgroundColor: "#ffffff",
-          // focusTextColor: "#ffffff",
-          // focusBgColor: "#000000",
-          // titleColor: "#000000",
-          // textColor: "#000000"
         },
       },
     },

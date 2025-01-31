@@ -13,20 +13,18 @@ export const skills: Flatfile.SheetConfig = {
       key: "reviewedSkill",
       type: "boolean",
       label: "Approved?",
-      constraints: [
-      ],
+      constraints: [],
     },
     {
       key: "source_job_code",
       type: "reference",
       label: "Source Job Code",
       config: {
-        ref: 'roles',
-        key: 'source_job_code',
-        relationship: 'has-one',
+        ref: "roles",
+        key: "source_job_code",
+        relationship: "has-one",
       },
-      constraints: [
-      ],
+      constraints: [],
       readonly: true,
     },
     {
@@ -34,67 +32,48 @@ export const skills: Flatfile.SheetConfig = {
       type: "reference",
       label: "Source Job Family",
       config: {
-        ref: 'roles',
-        key: 'source_job_family',
-        relationship: 'has-one',
+        ref: "roles",
+        key: "source_job_family",
+        relationship: "has-one",
       },
       readonly: true,
-      // constraints: [
-      //   {
-      //     type: "stored",
-      //     validator: "flatfileIsValidDateRange",
-      //     config: {},
-      //   },
-      // ],
     },
     {
       key: "source_job_title",
       type: "reference",
       label: "Source Job Title",
       config: {
-        ref: 'roles',
-        key: 'source_job_title',
-        relationship: 'has-one',
+        ref: "roles",
+        key: "source_job_title",
+        relationship: "has-one",
       },
       readonly: true,
-      // constraints: [
-      //   {
-      //     type: "stored",
-      //     validator: "flatfileIsValidDateRange",
-      //     config: {},
-      //   },
-      // ],
     },
     {
       key: "source_job_description",
       type: "reference",
       label: "Source Job Description",
       config: {
-        ref: 'roles',
-        key: 'source_job_description',
-        relationship: 'has-one',
+        ref: "roles",
+        key: "source_job_description",
+        relationship: "has-one",
       },
-      constraints: [
-      ],
+      constraints: [],
       readonly: true,
     },
     {
       key: "skill_code",
       type: "string",
       label: "Lightcast Skill Code",
-      constraints: [
-      ],
-      readonly: true,
+      constraints: [],
     },
     {
       key: "skill_name",
       type: "string",
       label: "Lightcast Skill Name",
-      constraints: [
-      ],
-      readonly: true,
+      constraints: [],
     },
-    //standard enum list I can pull from?
+    //standard enum list we can pull from?
     {
       key: "skill_category",
       type: "enum",
@@ -106,31 +85,26 @@ export const skills: Flatfile.SheetConfig = {
           { value: "Operations" },
           { value: "Strategy" },
           { value: "Personal" },
-        ]
+        ],
       },
-      constraints: [
-      ],
-      readonly: true,
+      constraints: [],
     },
     {
       key: "skill_description",
       type: "string",
-      label: "Lightcast Skill Category",
-      constraints: [
-      ],
-      readonly: true,
+      label: "Lightcast Skill Description",
+      constraints: [],
     },
     {
       key: "lightcast_code",
       type: "reference",
       label: "Lightcast Role Code",
       config: {
-        ref: 'roles',
-        key: 'lightcast_code',
-        relationship: 'has-one',
+        ref: "roles",
+        key: "lightcast_code",
+        relationship: "has-one",
       },
-      constraints: [
-      ],
+      constraints: [],
       readonly: true,
     },
     {
@@ -138,12 +112,11 @@ export const skills: Flatfile.SheetConfig = {
       type: "reference",
       label: "Lightcast Role Name",
       config: {
-        ref: 'roles',
-        key: 'lightcast_role_name',
-        relationship: 'has-one',
+        ref: "roles",
+        key: "lightcast_role_name",
+        relationship: "has-one",
       },
-      constraints: [
-      ],
+      constraints: [],
       readonly: true,
     },
     {
@@ -151,13 +124,18 @@ export const skills: Flatfile.SheetConfig = {
       type: "reference",
       label: "Lightcast Role Description",
       config: {
-        ref: 'roles',
-        key: 'lightcast_role_description',
-        relationship: 'has-one',
+        ref: "roles",
+        key: "lightcast_role_description",
+        relationship: "has-one",
       },
-      constraints: [
-      ],
+      constraints: [],
       readonly: true,
+    },
+    {
+      key: "customer_comment",
+      type: "string",
+      label: "Customer Comment",
+      constraints: [],
     },
   ],
   actions: [
@@ -168,5 +146,5 @@ export const skills: Flatfile.SheetConfig = {
       primary: true,
       description: "Filter the skills table by a specific job code",
     },
-  ]
+  ],
 };

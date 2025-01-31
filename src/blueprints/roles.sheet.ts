@@ -13,17 +13,13 @@ export const roles: Flatfile.SheetConfig = {
       key: "approvedRole",
       type: "boolean",
       label: "Approved?",
-      constraints: [
-      ],
+      constraints: [],
     },
     {
       key: "source_job_code",
       type: "string",
       label: "Source Job Code",
-      constraints: [
-        { type: "unique" },
-        { type: "required" }
-      ],
+      constraints: [{ type: "unique" }, { type: "required" }],
     },
     {
       key: "source_job_family",
@@ -39,43 +35,43 @@ export const roles: Flatfile.SheetConfig = {
       key: "source_job_description",
       type: "string",
       label: "Source Job Description",
-      constraints: [
-      ],
+      constraints: [],
     },
     {
       key: "lightcast_code",
       type: "string",
       label: "Lightcast Role Code",
-      constraints: [
-      ],
+      constraints: [],
     },
     {
       key: "lightcast_role_name",
       type: "string",
       label: "Lightcast Role Name",
-      constraints: [
-      ],
+      constraints: [],
     },
     {
       key: "lightcast_role_description",
       type: "string",
       label: "Lightcast Role Description",
-      constraints: [
-      ],
+      constraints: [],
     },
     {
       key: "lightcast_role_category",
       type: "string",
       label: "Lightcast Role Category",
-      constraints: [
-      ],
+      constraints: [],
+    },
+    {
+      key: "customer_comment",
+      type: "string",
+      label: "Customer Comment",
+      constraints: [],
     },
     {
       key: "lightcast_match_confidence",
       type: "number",
       label: "Lightcast Match Confidence",
-      constraints: [
-      ],
+      constraints: [],
     },
   ],
   actions: [
@@ -97,7 +93,7 @@ export const roles: Flatfile.SheetConfig = {
       operation: "dedupe-roles",
       mode: "background",
       label: "Dedupe roles by source code",
-      description: "Remove duplicate source roles"
-    }
-  ]
+      description: "Remove duplicate source roles",
+    },
+  ],
 };
